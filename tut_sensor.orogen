@@ -1,0 +1,15 @@
+name "tut_sensor"
+
+import_types_from "base"
+
+using_library 'rock_tutorial'
+import_types_from 'rock_tutorial/BearingDistanceSensor.hpp'
+
+task_context "Task" do
+   input_port "target_frame", "base/samples/RigidBodyState"
+   input_port "local_frame", "base/samples/RigidBodyState"
+   output_port "target_sensor_sample", "rock_tutorial/BearingDistanceSensor"
+
+   periodic 0.05
+end
+

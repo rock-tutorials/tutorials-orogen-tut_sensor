@@ -1,0 +1,11 @@
+<package>
+  <description brief="A simulated sensor component that generates a bearing/heading based on two provided poses">
+  
+  </description>
+  <author>/</author>
+  <license></license>
+  <url>http://</url>
+  <logo>http://</logo>
+  <depend package="tutorials/rock_tutorial" />
+  <depend package="base/types" />
+</package>
