@@ -52,14 +52,10 @@ void Task::updateHook()
     double d = v.norm();
 
     base::Angle yaw_delta;
-    Eigen::Vector3d forward = Eigen::Vector3d::Zero();
     if (d > 0.01)
     {
-        forward = local.orientation * base::Vector3d::UnitX();
-        Eigen::Vector3d vertical = local.orientation * base::Vector3d::UnitZ();
-        yaw_delta = base::Angle::vectorToVector(forward, v, base::Vector3d::UnitZ());
-        if (vertical.z() < 0)
-            yaw_delta = yaw_delta + base::Angle::fromRad(M_PI);
+        yaw_delta = base::Angle::vectorToVector(local.orientation * base::Vector3d::UnitY(), v, base::Vector3d::UnitZ());
+        yaw_delta = yaw_delta + base::Angle::fromRad(M_PI / 2);
 
         rock_tutorial::BearingDistanceSensor result;
         result.time = std::max(local.time, target.time);
