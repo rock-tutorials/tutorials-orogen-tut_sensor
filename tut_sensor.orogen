@@ -13,3 +13,18 @@ task_context "Task" do
    periodic 0.05
 end
 
+task_context 'TransformerTask' do
+   transformer do
+      # We need a reference frame (the follower's body) and the target frame
+      # (the leader body frame)
+      transform 'target', 'ref'
+      # Because the rocks reference frames are attached to the body (they
+      # 'roll', we also need the transformation from the world to the reference
+      # frame)
+      transform 'ref', 'world'
+      max_latency 1
+   end
+
+   output_port "target_sensor_sample", "rock_tutorial/BearingDistanceSensor"
+   periodic 0.05
+end
